@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Jugador {
     String nombre;
@@ -62,6 +63,14 @@ public class Jugador {
 
     public void setFechaContratacion(LocalDate fechaContratacion) {
         this.fechaContratacion = fechaContratacion;
+    }
+
+    /**
+     * metodo para calcular los años de antiguedad de un jugador
+     * @return
+     */
+    public int calcularAntiguedad(){
+        return (int) ChronoUnit.YEARS.between(fechaContratacion, LocalDate.now());
     }
 
 }
