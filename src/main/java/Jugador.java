@@ -1,5 +1,3 @@
-package PreParcia;
-
 import java.time.LocalDate;
 
 public class Jugador {
@@ -65,4 +63,5 @@ public class Jugador {
     public void setFechaContratacion(LocalDate fechaContratacion) {
         this.fechaContratacion = fechaContratacion;
     }
+
 }
