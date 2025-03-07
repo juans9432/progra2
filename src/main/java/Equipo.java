@@ -4,14 +4,14 @@ import java.util.List;
 public class Equipo {
     String nombre;
     float salarioTotal;
-    ArrayList<JugadorEnum> jugadores;
+    ArrayList<Jugador> jugadores;
     int cantidadDisponible = 200;
     ArrayList<JugadorBase> jugador;
 
     public Equipo(String nombre) {
         this.nombre = nombre;
         this.salarioTotal = salarioTotal;
-        this.jugadores = new ArrayList<JugadorEnum>();
+        this.jugadores = new ArrayList<Jugador>();
         this.jugador = new ArrayList<JugadorBase>();
     }
 
@@ -31,11 +31,11 @@ public class Equipo {
         this.salarioTotal = salarioTotal;
     }
 
-    public ArrayList<JugadorEnum> getJugadores() {
+    public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }
 
-    public void setJugadores(ArrayList<JugadorEnum> jugadores) {
+    public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
 
@@ -53,8 +53,8 @@ public class Equipo {
      * @return
      * @throws Exception
      */
-    public ArrayList<JugadorEnum> despedirJugador(JugadorEnum jugador) throws Exception{
-        ArrayList <JugadorEnum> jugadoresDespedidos = new ArrayList<JugadorEnum>();
+    public ArrayList<Jugador> despedirJugador(Jugador jugador) throws Exception{
+        ArrayList <Jugador> jugadoresDespedidos = new ArrayList<Jugador>();
         if(jugador.getCalificacion() <= 3){
             if(jugadores.remove(jugador)) {
                 jugadoresDespedidos.add(jugador);
@@ -68,7 +68,7 @@ public class Equipo {
      * @param jugador
      * @return
      */
-    public boolean esNecesario(JugadorEnum jugador){
+    public boolean esNecesario(Jugador jugador){
         if(jugador.getCalificacion() >= 4){
             return true;
         }
@@ -80,8 +80,8 @@ public class Equipo {
      * @param jugadores
      * @return
      */
-    public JugadorEnum obtenerPeorJugador(ArrayList<JugadorEnum> jugadores){
-        JugadorEnum peorJugador = jugadores.get(0);
+    public Jugador obtenerPeorJugador(ArrayList<Jugador> jugadores){
+        Jugador peorJugador = jugadores.get(0);
         for(int i = 1; i < jugadores.size(); i++){
             if(jugadores.get(i).getCalificacion() < peorJugador.getCalificacion()){
                 peorJugador = jugadores.get(i);
@@ -94,13 +94,13 @@ public class Equipo {
      * metodo para contratar un jugador
      * @param jugador
      */
-    public void contratarJugador (JugadorEnum jugador) {
+    public void contratarJugador (Jugador jugador) {
 
         if (esNecesario(jugador) && jugador.getSalario() < cantidadDisponible) {
             jugadores.add(jugador);
         }else if(!jugadores.isEmpty()){
 
-            JugadorEnum peorJugador = obtenerPeorJugador(jugadores);
+            Jugador peorJugador = obtenerPeorJugador(jugadores);
 
             if(jugador.getPosJuego().equals(peorJugador.getPosJuego()) && jugador.getCalificacion() > peorJugador.getCalificacion()){
                 if(jugadores.remove(peorJugador)){
@@ -149,7 +149,7 @@ public class Equipo {
         return porcentajes;
     }
 
-    public void rebajarSueldoJugador(JugadorEnum jugador){
+    public void rebajarSueldoJugador(Jugador jugador){
         if(jugador.calcularAntiguedad() > 2 && jugador.getCalificacion() > 3 && jugador.getCalificacion()< 5) {
             float nuevoSalario = jugador.getSalario() - 0.75f;
             jugador.setSalario(nuevoSalario);

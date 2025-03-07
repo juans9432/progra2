@@ -1,14 +1,14 @@
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class JugadorEnum {
+public class Jugador {
     String nombre;
     float salario, calificacion;
     int numCamiseta;
     Posicion posJuego;
     LocalDate fechaContratacion;
 
-    public JugadorEnum(String nombre, float salario, float calificacion, int numCamiseta, Posicion posJuego, LocalDate fechaContratacion) {
+    public Jugador(String nombre, float salario, float calificacion, int numCamiseta, Posicion posJuego, LocalDate fechaContratacion) {
         this.nombre = nombre;
         this.salario = salario;
         this.calificacion = calificacion;
